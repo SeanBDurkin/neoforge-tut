@@ -1,5 +1,8 @@
 package au.id.durkin.tutorialmod;
 
+import au.id.durkin.tutorialmod.item.ModItems;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -13,6 +16,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+
 // https://www.youtube.com/watch?v=yG-oJPR_40w&list=PLKGarocXCE1G6CQOoiYdMVx-E1d9F_itF 18:37
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(TutorialMod.MOD_ID)
@@ -32,6 +36,7 @@ public class TutorialMod {
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
+        ModItems.register( modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -45,6 +50,9 @@ public class TutorialMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.BRENCOIN);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
