@@ -1,5 +1,6 @@
 package au.id.seanbdurkin.tutorialmod;
 
+import au.id.seanbdurkin.tutorialmod.item.ModCreativeModeTabs;
 import au.id.seanbdurkin.tutorialmod.item.ModItems;
 import au.id.seanbdurkin.tutorialmod.block.ModBlocks;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -40,6 +41,8 @@ public class TutorialMod
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
+
+        ModCreativeModeTabs.register( modEventBus);
         ModItems.register( modEventBus);
         ModBlocks.register( modEventBus);
 
@@ -63,6 +66,7 @@ public class TutorialMod
         }
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
             event.accept( ModBlocks.BISMUTH_BLOCK);
+            event.accept( ModBlocks.BISMUTH_ORE);
         }
     }
 
