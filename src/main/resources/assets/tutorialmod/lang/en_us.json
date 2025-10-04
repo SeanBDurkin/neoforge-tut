@@ -1,4 +1,5 @@
 {
   "item.tutorialmod.bismuth": "Bismuth",
-  "item.tutorialmod.raw_bismuth": "Raw bismuth"
+  "item.tutorialmod.raw_bismuth": "Raw bismuth",
+  "block.tutorialmod.bismuth_block": "Block of Bismuth"
 }
